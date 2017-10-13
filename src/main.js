@@ -16,7 +16,12 @@ const FortuneTeller = require('galvanize-game-mechanics').FortuneTeller
 */
 
 function answerQuestions (questions) {
-  
+  const questionsArr = questions.split(',')
+  const promises = questionsArr.map(question => FortuneTeller.ask(question))
+
+  return Promise.all(promises).then(results => {
+    return results.map(answer => answer.response)
+  })
 }
 
 module.exports = { answerQuestions }
