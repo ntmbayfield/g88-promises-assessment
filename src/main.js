@@ -13,7 +13,13 @@ const FortuneTeller = require('galvanize-game-mechanics').FortuneTeller
 */
 
 function answerQuestions (questions) {
-
+  Promise.all(questions)
+  .then(function (result) {
+    console.log(result)
+  })
+  .catch(function (error) {
+    console.error(error)
+  })
 }
 
 module.exports = { answerQuestions }
